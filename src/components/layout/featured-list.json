@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_layout_featured_lists",
+  "info": {
+    "displayName": "Featured List"
+  },
+  "options": {},
+  "attributes": {
+    "preHeading": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "text"
+    }
+  }
+}
