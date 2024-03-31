@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "properties",
+  "collectionName": "projects",
   "info": {
-    "singularName": "property",
-    "pluralName": "properties",
-    "displayName": "Properties",
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Projects",
     "description": ""
   },
   "options": {
@@ -16,9 +16,19 @@
     }
   },
   "attributes": {
+    "slug": {
+      "type": "string",
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "title": {
       "type": "string",
-      "default": "New Property Title",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -47,28 +57,8 @@
         }
       }
     },
-    "price": {
-      "type": "biginteger",
-      "default": "200000",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "description": {
-      "type": "richtext",
-      "default": "This is the property description",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "slug": {
-      "type": "string",
-      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-      "required": true,
+      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -78,7 +68,7 @@
     "features": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::property-feature.property-feature"
+      "target": "api::project-feature.project-feature"
     }
   }
 }

@@ -1,18 +1,29 @@
 {
   "collectionName": "components_layout_featured_lists",
   "info": {
-    "displayName": "Featured List"
+    "displayName": "Featured List",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "preHeading": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "heading": {
-      "type": "string"
+    "propertiesHeading": {
+      "type": "string",
+      "required": true
     },
-    "subHeading": {
-      "type": "text"
+    "propertiesSubHeading": {
+      "type": "text",
+      "required": true
+    },
+    "projectsSubHeading": {
+      "type": "text",
+      "required": true
+    },
+    "projectsHeading": {
+      "type": "string"
     }
   }
 }
