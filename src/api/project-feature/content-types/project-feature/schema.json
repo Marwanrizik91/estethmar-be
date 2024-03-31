@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_features",
+  "info": {
+    "singularName": "project-feature",
+    "pluralName": "project-features",
+    "displayName": "Project Features",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

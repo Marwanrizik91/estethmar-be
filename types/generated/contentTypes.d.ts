@@ -892,13 +892,29 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
     singularName: 'global';
     pluralName: 'globals';
     displayName: 'Global';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -914,6 +930,12 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::global.global',
+      'oneToMany',
+      'api::global.global'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -927,6 +949,11 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     title: Attribute.String;
@@ -949,6 +976,141 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'Projects';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    images: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    isFeatured: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    description: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    features: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::project-feature.project-feature'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::project.project'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiProjectFeatureProjectFeature extends Schema.CollectionType {
+  collectionName: 'project_features';
+  info: {
+    singularName: 'project-feature';
+    pluralName: 'project-features';
+    displayName: 'Project Features';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project-feature.project-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project-feature.project-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::project-feature.project-feature',
+      'oneToMany',
+      'api::project-feature.project-feature'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -957,21 +1119,65 @@ export interface ApiPropertyProperty extends Schema.CollectionType {
   info: {
     singularName: 'property';
     pluralName: 'properties';
-    displayName: 'Property';
+    displayName: 'Properties';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String & Attribute.DefaultTo<'New Property Title'>;
-    images: Attribute.Media;
-    isFeatured: Attribute.Boolean & Attribute.DefaultTo<false>;
-    price: Attribute.BigInteger & Attribute.DefaultTo<'200000'>;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'New Property Title'>;
+    images: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    isFeatured: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    price: Attribute.BigInteger &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'200000'>;
     description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Attribute.DefaultTo<'This is the property description'>;
-    features: Attribute.Component<'components.feature', true>;
-    slug: Attribute.UID<'api::property.property', 'title'>;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    features: Attribute.Relation<
+      'api::property.property',
+      'oneToMany',
+      'api::property-feature.property-feature'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -987,6 +1193,62 @@ export interface ApiPropertyProperty extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::property.property',
+      'oneToMany',
+      'api::property.property'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPropertyFeaturePropertyFeature
+  extends Schema.CollectionType {
+  collectionName: 'property_features';
+  info: {
+    singularName: 'property-feature';
+    pluralName: 'property-features';
+    displayName: 'Property Features';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    icon: Attribute.Media;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::property-feature.property-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::property-feature.property-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::property-feature.property-feature',
+      'oneToMany',
+      'api::property-feature.property-feature'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1012,7 +1274,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::global.global': ApiGlobalGlobal;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::project.project': ApiProjectProject;
+      'api::project-feature.project-feature': ApiProjectFeatureProjectFeature;
       'api::property.property': ApiPropertyProperty;
+      'api::property-feature.property-feature': ApiPropertyFeaturePropertyFeature;
     }
   }
 }

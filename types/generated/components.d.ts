@@ -1,20 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ComponentsFeature extends Schema.Component {
-  collectionName: 'components_components_features';
-  info: {
-    displayName: 'Feature';
-    description: '';
-  };
-  attributes: {
-    features: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        ['Sea View', 'Mountain View', 'Resort', 'Near Beach']
-      >;
-  };
-}
-
 export interface ComponentsLink extends Schema.Component {
   collectionName: 'components_components_links';
   info: {
@@ -56,15 +41,28 @@ export interface ComponentsService extends Schema.Component {
   };
 }
 
+export interface ComponentsSlug extends Schema.Component {
+  collectionName: 'components_components_slugs';
+  info: {
+    displayName: 'Slug';
+  };
+  attributes: {
+    slug: Attribute.String;
+  };
+}
+
 export interface LayoutFeaturedList extends Schema.Component {
   collectionName: 'components_layout_featured_lists';
   info: {
     displayName: 'Featured List';
+    description: '';
   };
   attributes: {
-    preHeading: Attribute.String;
-    heading: Attribute.String;
-    subHeading: Attribute.Text;
+    preHeading: Attribute.String & Attribute.Required;
+    propertiesHeading: Attribute.String & Attribute.Required;
+    propertiesSubHeading: Attribute.Text & Attribute.Required;
+    projectsSubHeading: Attribute.Text & Attribute.Required;
+    projectsHeading: Attribute.String;
   };
 }
 
@@ -112,10 +110,10 @@ export interface LayoutServicesSection extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'components.feature': ComponentsFeature;
       'components.link': ComponentsLink;
       'components.property': ComponentsProperty;
       'components.service': ComponentsService;
+      'components.slug': ComponentsSlug;
       'layout.featured-list': LayoutFeaturedList;
       'layout.hero-section': LayoutHeroSection;
       'layout.services-section': LayoutServicesSection;
