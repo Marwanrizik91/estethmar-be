@@ -959,7 +959,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     title: Attribute.String;
     description: Attribute.Text;
     blocks: Attribute.DynamicZone<
-      ['layout.hero-section', 'layout.services-section', 'layout.featured-list']
+      [
+        'layout.hero-section',
+        'layout.services-section',
+        'layout.featured-list',
+        'layout.testimonials-section'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
