@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_components_testimonies",
+  "info": {
+    "displayName": "testimony"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "occupation": {
+      "type": "string",
+      "required": true
+    },
+    "stars": {
+      "type": "decimal",
+      "default": 5,
+      "required": true,
+      "max": 5,
+      "min": 1
+    }
+  }
+}

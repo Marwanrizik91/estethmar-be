@@ -51,6 +51,30 @@ export interface ComponentsSlug extends Schema.Component {
   };
 }
 
+export interface ComponentsTestimony extends Schema.Component {
+  collectionName: 'components_components_testimonies';
+  info: {
+    displayName: 'testimony';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    image: Attribute.Media;
+    gender: Attribute.Enumeration<['male', 'female']>;
+    occupation: Attribute.String & Attribute.Required;
+    stars: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 5;
+        },
+        number
+      > &
+      Attribute.DefaultTo<5>;
+  };
+}
+
 export interface LayoutFeaturedList extends Schema.Component {
   collectionName: 'components_layout_featured_lists';
   info: {
@@ -107,6 +131,19 @@ export interface LayoutServicesSection extends Schema.Component {
   };
 }
 
+export interface LayoutTestimonialsSection extends Schema.Component {
+  collectionName: 'components_layout_testimonials_sections';
+  info: {
+    displayName: 'Testimonials Section';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.Text;
+    testimonials: Attribute.Component<'components.testimony', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -114,9 +151,11 @@ declare module '@strapi/types' {
       'components.property': ComponentsProperty;
       'components.service': ComponentsService;
       'components.slug': ComponentsSlug;
+      'components.testimony': ComponentsTestimony;
       'layout.featured-list': LayoutFeaturedList;
       'layout.hero-section': LayoutHeroSection;
       'layout.services-section': LayoutServicesSection;
+      'layout.testimonials-section': LayoutTestimonialsSection;
     }
   }
 }

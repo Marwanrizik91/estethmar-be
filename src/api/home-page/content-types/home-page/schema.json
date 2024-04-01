@@ -27,7 +27,8 @@
       "components": [
         "layout.hero-section",
         "layout.services-section",
-        "layout.featured-list"
+        "layout.featured-list",
+        "layout.testimonials-section"
       ]
     }
   }
