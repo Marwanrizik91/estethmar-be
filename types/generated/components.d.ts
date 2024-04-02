@@ -1,5 +1,24 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ComponentsCta extends Schema.Component {
+  collectionName: 'components_components_ctas';
+  info: {
+    displayName: 'CTA';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    buttons: Attribute.Component<'components.link', true> &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 2;
+        },
+        number
+      >;
+  };
+}
+
 export interface ComponentsLink extends Schema.Component {
   collectionName: 'components_components_links';
   info: {
@@ -15,21 +34,6 @@ export interface ComponentsLink extends Schema.Component {
   };
 }
 
-export interface ComponentsProperty extends Schema.Component {
-  collectionName: 'components_components_properties';
-  info: {
-    displayName: 'Property';
-    description: '';
-  };
-  attributes: {
-    image: Attribute.Media;
-    title: Attribute.String;
-    subtitle: Attribute.String;
-    price: Attribute.BigInteger;
-    isFeatured: Attribute.Boolean & Attribute.DefaultTo<false>;
-  };
-}
-
 export interface ComponentsService extends Schema.Component {
   collectionName: 'components_components_services';
   info: {
@@ -38,16 +42,6 @@ export interface ComponentsService extends Schema.Component {
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
-  };
-}
-
-export interface ComponentsSlug extends Schema.Component {
-  collectionName: 'components_components_slugs';
-  info: {
-    displayName: 'Slug';
-  };
-  attributes: {
-    slug: Attribute.String;
   };
 }
 
@@ -147,10 +141,9 @@ export interface LayoutTestimonialsSection extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'components.cta': ComponentsCta;
       'components.link': ComponentsLink;
-      'components.property': ComponentsProperty;
       'components.service': ComponentsService;
-      'components.slug': ComponentsSlug;
       'components.testimony': ComponentsTestimony;
       'layout.featured-list': LayoutFeaturedList;
       'layout.hero-section': LayoutHeroSection;
