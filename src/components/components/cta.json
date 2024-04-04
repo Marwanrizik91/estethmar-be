@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_components_ctas",
+  "info": {
+    "displayName": "CTA"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "text"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link",
+      "max": 2,
+      "min": 1
+    }
+  }
+}

@@ -1043,6 +1043,13 @@ export interface ApiBlogsPageBlogsPage extends Schema.SingleType {
         };
       }>;
     description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta: Attribute.Component<'components.cta'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
