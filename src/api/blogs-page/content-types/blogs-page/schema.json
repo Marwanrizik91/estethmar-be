@@ -40,7 +40,18 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.cta"
     }
   }
 }

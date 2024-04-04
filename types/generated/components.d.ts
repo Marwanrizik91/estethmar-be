@@ -27,8 +27,8 @@ export interface ComponentsLink extends Schema.Component {
     description: '';
   };
   attributes: {
-    url: Attribute.String;
-    text: Attribute.String;
+    url: Attribute.String & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
     variant: Attribute.Enumeration<['default', 'outline']>;
   };
