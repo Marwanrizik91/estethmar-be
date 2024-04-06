@@ -4,11 +4,17 @@ export interface ComponentsCta extends Schema.Component {
   collectionName: 'components_components_ctas';
   info: {
     displayName: 'CTA';
+    description: '';
   };
   attributes: {
-    heading: Attribute.String;
-    subHeading: Attribute.Text;
+    heading: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'cta heading here'>;
+    subHeading: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'cta subheading here'>;
     buttons: Attribute.Component<'components.link', true> &
+      Attribute.Required &
       Attribute.SetMinMax<
         {
           min: 1;
@@ -92,8 +98,12 @@ export interface LayoutHeroSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    heading: Attribute.String;
-    subHeading: Attribute.Text;
+    heading: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Hero heading here'>;
+    subHeading: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'Hero sub heading here'>;
     image: Attribute.Media;
     buttons: Attribute.Component<'components.link', true> &
       Attribute.SetMinMax<

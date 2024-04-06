@@ -1312,6 +1312,85 @@ export interface ApiProjectFeatureProjectFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiPropertiesPagePropertiesPage extends Schema.SingleType {
+  collectionName: 'properties_pages';
+  info: {
+    singularName: 'properties-page';
+    pluralName: 'properties-pages';
+    displayName: 'Properties Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    preTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta: Attribute.Component<'components.cta'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    projectsHero: Attribute.Component<'layout.hero-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    propertiesHero: Attribute.Component<'layout.hero-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::properties-page.properties-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::properties-page.properties-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::properties-page.properties-page',
+      'oneToMany',
+      'api::properties-page.properties-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiPropertyProperty extends Schema.CollectionType {
   collectionName: 'properties';
   info: {
@@ -1477,6 +1556,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::project.project': ApiProjectProject;
       'api::project-feature.project-feature': ApiProjectFeatureProjectFeature;
+      'api::properties-page.properties-page': ApiPropertiesPagePropertiesPage;
       'api::property.property': ApiPropertyProperty;
       'api::property-feature.property-feature': ApiPropertyFeaturePropertyFeature;
     }
