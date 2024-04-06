@@ -8,10 +8,14 @@
   "options": {},
   "attributes": {
     "heading": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "default": "Hero heading here"
     },
     "subHeading": {
-      "type": "text"
+      "type": "text",
+      "required": true,
+      "default": "Hero sub heading here"
     },
     "image": {
       "type": "media",
