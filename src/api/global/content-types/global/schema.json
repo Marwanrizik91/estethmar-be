@@ -31,6 +31,26 @@
           "localized": true
         }
       }
+    },
+    "subscribe": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.subscribe"
+    },
+    "footerLinks": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.link"
     }
   }
 }
