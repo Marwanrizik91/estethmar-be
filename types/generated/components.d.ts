@@ -51,6 +51,18 @@ export interface ComponentsService extends Schema.Component {
   };
 }
 
+export interface ComponentsSubscribe extends Schema.Component {
+  collectionName: 'components_components_subscribes';
+  info: {
+    displayName: 'subscribe';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.Text;
+  };
+}
+
 export interface ComponentsTestimony extends Schema.Component {
   collectionName: 'components_components_testimonies';
   info: {
@@ -154,6 +166,7 @@ declare module '@strapi/types' {
       'components.cta': ComponentsCta;
       'components.link': ComponentsLink;
       'components.service': ComponentsService;
+      'components.subscribe': ComponentsSubscribe;
       'components.testimony': ComponentsTestimony;
       'layout.featured-list': LayoutFeaturedList;
       'layout.hero-section': LayoutHeroSection;
