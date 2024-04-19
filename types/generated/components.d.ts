@@ -1,5 +1,20 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ComponentsContactForm extends Schema.Component {
+  collectionName: 'components_components_contact_forms';
+  info: {
+    displayName: 'Contact Form';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Contact us'>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<"Let's get this conversation started">;
+  };
+}
+
 export interface ComponentsCta extends Schema.Component {
   collectionName: 'components_components_ctas';
   info: {
@@ -25,6 +40,17 @@ export interface ComponentsCta extends Schema.Component {
   };
 }
 
+export interface ComponentsInformationLine extends Schema.Component {
+  collectionName: 'components_components_information_lines';
+  info: {
+    displayName: 'Information Line';
+  };
+  attributes: {
+    name: Attribute.String;
+    value: Attribute.Text;
+  };
+}
+
 export interface ComponentsLink extends Schema.Component {
   collectionName: 'components_components_links';
   info: {
@@ -36,7 +62,8 @@ export interface ComponentsLink extends Schema.Component {
     url: Attribute.String & Attribute.Required;
     text: Attribute.String & Attribute.Required;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
-    variant: Attribute.Enumeration<['default', 'outline']>;
+    variant: Attribute.Enumeration<['default', 'outline']> &
+      Attribute.DefaultTo<'default'>;
   };
 }
 
@@ -87,6 +114,19 @@ export interface ComponentsTestimony extends Schema.Component {
   };
 }
 
+export interface LayoutContent extends Schema.Component {
+  collectionName: 'components_layout_contents';
+  info: {
+    displayName: 'Content';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media;
+    content: Attribute.Blocks;
+  };
+}
+
 export interface LayoutFeaturedList extends Schema.Component {
   collectionName: 'components_layout_featured_lists';
   info: {
@@ -127,6 +167,18 @@ export interface LayoutHeroSection extends Schema.Component {
   };
 }
 
+export interface LayoutInformationSection extends Schema.Component {
+  collectionName: 'components_layout_information_sections';
+  info: {
+    displayName: 'Information Section';
+    description: '';
+  };
+  attributes: {
+    lines: Attribute.Component<'components.information-line', true>;
+    title: Attribute.String;
+  };
+}
+
 export interface LayoutServicesSection extends Schema.Component {
   collectionName: 'components_layout_services_sections';
   info: {
@@ -163,13 +215,17 @@ export interface LayoutTestimonialsSection extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'components.contact-form': ComponentsContactForm;
       'components.cta': ComponentsCta;
+      'components.information-line': ComponentsInformationLine;
       'components.link': ComponentsLink;
       'components.service': ComponentsService;
       'components.subscribe': ComponentsSubscribe;
       'components.testimony': ComponentsTestimony;
+      'layout.content': LayoutContent;
       'layout.featured-list': LayoutFeaturedList;
       'layout.hero-section': LayoutHeroSection;
+      'layout.information-section': LayoutInformationSection;
       'layout.services-section': LayoutServicesSection;
       'layout.testimonials-section': LayoutTestimonialsSection;
     }

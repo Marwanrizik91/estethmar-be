@@ -24,7 +24,8 @@
       "enum": [
         "default",
         "outline"
-      ]
+      ],
+      "default": "default"
     }
   }
 }

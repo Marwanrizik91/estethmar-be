@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dynamic_pages",
+  "info": {
+    "singularName": "dynamic-page",
+    "pluralName": "dynamic-pages",
+    "displayName": "Dynamic Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "blocks": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "layout.content",
+        "layout.featured-list",
+        "layout.hero-section",
+        "layout.information-section",
+        "layout.services-section",
+        "layout.testimonials-section"
+      ]
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "required": true
+    }
+  }
+}

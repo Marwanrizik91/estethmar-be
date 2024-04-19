@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_information_lines",
+  "info": {
+    "displayName": "Information Line"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "value": {
+      "type": "text"
+    }
+  }
+}

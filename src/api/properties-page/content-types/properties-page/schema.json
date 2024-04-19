@@ -71,6 +71,17 @@
         }
       },
       "component": "layout.hero-section"
+    },
+    "contactForm": {
+      "displayName": "Contact Form",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "components.contact-form"
     }
   }
 }

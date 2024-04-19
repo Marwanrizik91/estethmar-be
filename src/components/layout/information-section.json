@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_information_sections",
+  "info": {
+    "displayName": "Information Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "lines": {
+      "displayName": "Information Line",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.information-line"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_components_contact_forms",
+  "info": {
+    "displayName": "Contact Form"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Contact us"
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "default": "Let's get this conversation started"
+    }
+  }
+}
