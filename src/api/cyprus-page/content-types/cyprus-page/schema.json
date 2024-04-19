@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "cyprus_pages",
+  "info": {
+    "singularName": "cyprus-page",
+    "pluralName": "cyprus-pages",
+    "displayName": "Cyprus-page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.cta"
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "blocks"
+    }
+  }
+}
