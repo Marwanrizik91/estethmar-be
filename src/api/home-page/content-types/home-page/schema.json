@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "Home page",
+    "displayName": "Home-page",
     "description": ""
   },
   "options": {
@@ -17,12 +17,29 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
     },
     "blocks": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "type": "dynamiczone",
       "components": [
         "layout.hero-section",

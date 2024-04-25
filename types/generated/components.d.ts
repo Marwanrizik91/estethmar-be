@@ -142,6 +142,21 @@ export interface LayoutFeaturedList extends Schema.Component {
   };
 }
 
+export interface LayoutHeader extends Schema.Component {
+  collectionName: 'components_layout_headers';
+  info: {
+    displayName: 'Header';
+  };
+  attributes: {
+    heading: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Discover More Properties'>;
+    subHeading: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'Stay up to date with our most seeked properties'>;
+  };
+}
+
 export interface LayoutHeroSection extends Schema.Component {
   collectionName: 'components_layout_hero_sections';
   info: {
@@ -176,6 +191,20 @@ export interface LayoutInformationSection extends Schema.Component {
   attributes: {
     lines: Attribute.Component<'components.information-line', true>;
     title: Attribute.String;
+  };
+}
+
+export interface LayoutPage extends Schema.Component {
+  collectionName: 'components_layout_pages';
+  info: {
+    displayName: 'page';
+  };
+  attributes: {
+    slug: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    content: Attribute.Blocks & Attribute.Required;
   };
 }
 
@@ -224,8 +253,10 @@ declare module '@strapi/types' {
       'components.testimony': ComponentsTestimony;
       'layout.content': LayoutContent;
       'layout.featured-list': LayoutFeaturedList;
+      'layout.header': LayoutHeader;
       'layout.hero-section': LayoutHeroSection;
       'layout.information-section': LayoutInformationSection;
+      'layout.page': LayoutPage;
       'layout.services-section': LayoutServicesSection;
       'layout.testimonials-section': LayoutTestimonialsSection;
     }

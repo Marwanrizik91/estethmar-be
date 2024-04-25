@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_headers",
+  "info": {
+    "displayName": "Header"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "Discover More Properties"
+    },
+    "subHeading": {
+      "type": "text",
+      "required": true,
+      "default": "Stay up to date with our most seeked properties"
+    }
+  }
+}
