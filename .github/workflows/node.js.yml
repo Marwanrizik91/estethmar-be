@@ -13,7 +13,16 @@ jobs:
       matrix:
         node-version: [20.11.1]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+    env:
+      DATABASE_CLIENT: ${{secrets.DATABASE_CLIENT}}
+      DATABASE_FILENAME: ${{secrets.DATABASE_FILENAME}}
+      JWT_SECRET: ${{secrets.JWT_SECRET}}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}}
+      APP_KEYS: ${{secrets.APP_KEYS}}
+      API_TOKEN_SALT: ${{secrets.API_TOKEN_SALT}}
+      ADMIN_JWT_SECRET: ${{secrets.ADMIN_JWT_SECRET}}
+      TRANSFER_TOKEN_SALT: ${{secrets.TRANSFER_TOKEN_SALT}}
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
