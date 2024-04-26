@@ -1582,7 +1582,6 @@ export interface ApiGreeceGreece extends Schema.CollectionType {
         };
       }>;
     parentSlug: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
