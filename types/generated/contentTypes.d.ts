@@ -1147,6 +1147,39 @@ export interface ApiBlogsPageBlogsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiContactRequestContactRequest extends Schema.CollectionType {
+  collectionName: 'contact_requests';
+  info: {
+    singularName: 'contact-request';
+    pluralName: 'contact-requests';
+    displayName: 'Contact Request';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstName: Attribute.String;
+    lastName: Attribute.String;
+    email: Attribute.Email;
+    message: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-request.contact-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-request.contact-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContactUsContactUs extends Schema.SingleType {
   collectionName: 'contact_uses';
   info: {
@@ -1180,6 +1213,12 @@ export interface ApiContactUsContactUs extends Schema.SingleType {
         };
       }> &
       Attribute.DefaultTo<"Let's get this conversation started!">;
+    content: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1543,7 +1582,6 @@ export interface ApiGreeceGreece extends Schema.CollectionType {
         };
       }>;
     parentSlug: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -1645,7 +1683,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   info: {
     singularName: 'home-page';
     pluralName: 'home-pages';
-    displayName: 'Home page';
+    displayName: 'Home-page';
     description: '';
   };
   options: {
@@ -1657,8 +1695,20 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     };
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     blocks: Attribute.DynamicZone<
       [
         'layout.hero-section',
@@ -1666,7 +1716,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         'layout.featured-list',
         'layout.testimonials-section'
       ]
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2086,7 +2141,7 @@ export interface ApiPropertyProperty extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    currency: Attribute.Enumeration<['USD', 'EUR', 'AED']> &
+    currency: Attribute.Enumeration<['USD', 'EUR', 'UAD']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2203,6 +2258,7 @@ export interface ApiUaeUae extends Schema.CollectionType {
     singularName: 'uae';
     pluralName: 'uaes';
     displayName: 'UAE';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -2234,6 +2290,7 @@ export interface ApiUaeUae extends Schema.CollectionType {
         };
       }>;
     image: Attribute.Media &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -2364,6 +2421,7 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::blogs-page.blogs-page': ApiBlogsPageBlogsPage;
+      'api::contact-request.contact-request': ApiContactRequestContactRequest;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::cyprus.cyprus': ApiCyprusCyprus;
       'api::cyprus-page.cyprus-page': ApiCyprusPageCyprusPage;
